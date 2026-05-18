@@ -420,7 +420,7 @@ class AIHawkJobManager:
         url_parts = []
         if parameters['remote']:
             url_parts.append("f_CF=f_WRA")
-        experience_levels = [str(i + 1) for i, (level, v) in enumerate(parameters.get('experience_level', {}).items()) if
+        experience_levels = [str(i + 1) for i, (level, v) in enumerate(parameters.get('experienceLevel', {}).items()) if
                              v]
         if experience_levels:
             url_parts.append(f"f_E={','.join(experience_levels)}")
@@ -451,7 +451,6 @@ class AIHawkJobManager:
         logger.debug("Extracting job information from tile")
         job_title, company, job_location, apply_method, link = "", "", "", "", ""
         try:
-            print(job_tile.get_attribute('outerHTML'))
             job_title = job_tile.find_element(By.CLASS_NAME, 'job-card-list__title').find_element(By.TAG_NAME, 'strong').text
             
             link = job_tile.find_element(By.CLASS_NAME, 'job-card-list__title').get_attribute('href').split('?')[0]

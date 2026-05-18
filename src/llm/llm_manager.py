@@ -100,7 +100,6 @@ class HuggingFaceModel(AIModel):
     def invoke(self, prompt: str) -> BaseMessage:
         response = self.chatmodel.invoke(prompt)
         logger.debug("Invoking Model from Hugging Face API")
-        print(response,type(response))
         return response
 
 class AIAdapter:
@@ -597,6 +596,10 @@ class GPTAnswerer:
         best_option = self.find_best_match(output_str, options)
         logger.debug(f"Best option determined: {best_option}")
         return best_option
+
+    def answer_question_date(self) -> datetime:
+        logger.debug("Returning today's date for date question")
+        return datetime.today()
 
     def resume_or_cover(self, phrase: str) -> str:
         logger.debug(

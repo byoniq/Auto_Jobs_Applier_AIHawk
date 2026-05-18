@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import WebDriverException
 from lib_resume_builder_AIHawk import Resume, FacadeManager, ResumeGenerator, StyleManager
-from src.utils import chromeBrowserOptions
+from src.utils import chrome_browser_options
 from src.llm.llm_manager import GPTAnswerer
 from src.aihawk_authenticator import AIHawkAuthenticator
 from src.aihawk_bot_facade import AIHawkBotFacade
@@ -210,7 +210,7 @@ def main(collect: False, resume: Path = None):
         create_and_run_bot(parameters, llm_api_key)
     except ConfigError as ce:
         logger.error(f"Configuration error: {str(ce)}")
-        logger.error(f"Refer to the configuration guide for troubleshooting: https://github.com/feder-cr/Auto_Jobs_Applier_AIHawk?tab=readme-ov-file#configuration {str(ce)}")
+        logger.error(f"Refer to the configuration guide for troubleshooting: https://github.com/byoniq/Auto_Jobs_Applier_AIHawk?tab=readme-ov-file#configuration {str(ce)}")
 
     except FileNotFoundError as fnf:
         logger.error(f"File not found: {str(fnf)}")
